@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Sección de Pago -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body p-5">
+                    <h2 class="card-title text-center mb-4">Pagar {{ plan_info.nombre }}</h2>
+                    <p><strong>Descripción:</strong> {{ plan_info.descripcion }}</p>
+                    <p><strong>Precio:</strong> {{ plan_info.precio }}</p>
+
+                    <!-- Formulario de Pago (simulado) -->
+                    <form method="POST" action="#">
+                        <div class="mb-3">
+                            <label for="cardNumber" class="form-label">Número de Tarjeta</label>
+                            <input type="text" class="form-control" id="cardNumber" name="cardNumber" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="expiryDate" class="form-label">Fecha de Expiración</label>
+                            <input type="text" class="form-control" id="expiryDate" name="expiryDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="cvv" class="form-label">CVV</label>
+                            <input type="text" class="form-control" id="cvv" name="cvv" required>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Pagar Ahora</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

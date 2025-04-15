@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Sección de Inicio de Sesión -->
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body p-5">
+                    <h2 class="card-title text-center mb-4">Iniciar Sesión en VitalFit</h2>
+                    <form method="POST" action="{{ url_for('login') }}">
+                        <!-- Campo de Email -->
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        <!-- Campo de Contraseña -->
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Contraseña</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <!-- Botón de Inicio de Sesión -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Iniciar Sesión</button>
+                        </div>
+                    </form>
+                    <!-- Enlace para Registrarse -->
+                    <div class="text-center mt-4">
+                        <p>¿No tienes una cuenta? <a href="{{ url_for('register') }}">Regístrate aquí</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

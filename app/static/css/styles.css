@@ -1,0 +1,400 @@
+/* Estilos generales */
+body {
+    background: linear-gradient(135deg, #969696, #5c5c5c); /* Fondo gris claro con degradado */
+    min-height: 100vh; /* Asegura que el fondo cubra toda la pantalla */
+    margin: 0;
+    padding: 0;
+    font-family: Roboto, sans-serif;
+
+    /* Cambia el color de fondo de la barra de navegación */
+.navbar-custom {
+    position: relative;
+    z-index: 2000;
+    background-color: #686868;  /* Azul personalizado */
+}
+
+/* Estilo específico para el botón de logout */
+#logoutButton {
+    background: rgba(255, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 5px 10px;
+    transition: all 0.3s;
+}
+
+#logoutButton:hover {
+    background: rgba(255, 0, 0, 0.2);
+    text-decoration: none;
+}
+
+/* Ajusta el margen superior del contenido */
+main {
+    margin-top: 70px; /* Para compensar el navbar fixed */
+}
+/* Cambia el color del texto en la barra de navegación */
+.navbar-custom .navbar-nav .nav-link {
+    color: #FFFFFF;  /* Blanco */
+
+.navbar-custom .logout-btn {
+    color: #ff6f61 !important;
+    font-weight: bold;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    margin-left: 10px;
+}
+
+.navbar-custom .logout-btn:hover {
+    background-color: rgba(255, 111, 97, 0.2);
+    transform: scale(1.05);
+}
+}
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3), transparent 70%);
+    pointer-events: none; /* Evita que interfiera con los clics */
+    z-index: -1; /* Colócalo detrás del contenido */
+}
+/* Animación de olas de viento */
+@keyframes waveAnimation {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%; /* Doble ancho para el efecto de movimiento */
+    height: 100%;
+    background: linear-gradient(90deg, rgba(33, 255, 70, 0.1) 25%, transparent 50%, rgba(255, 145, 19, 0.281) 75%);
+    animation: waveAnimation 10s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+}
+/* Estilos para el contenido principal */
+main {
+    background: rgba(238, 237, 237, 0.8); /* Fondo semi-transparente para el contenido */
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 4px 10px rgba(46, 46, 46, 0.1); /* Sombra suave */
+}
+
+/* Estilos para las tarjetas */
+.card {
+    background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente para las tarjetas */
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+/* Estilos para los botones */
+.btn-primary {
+    background-color: #ff6f61;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e65a50;
+}
+#carouselExample {
+        position: relative;
+        z-index: 1000;
+        max-height: 80vh;
+        overflow: hidden;
+    }
+    
+    #carouselExample .carousel-inner,
+    #carouselExample .carousel-item {
+        height: 100%;
+    }
+    
+    #carouselExample .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+    
+    #carouselExample .carousel-caption {
+        bottom: auto;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    @media (max-width: 768px) {
+    #carouselExample {
+        max-height: 30vh;
+    }
+}
+.btn-primary:hover {
+    background-color: #e65a50;
+}
+
+
+/* Footer */
+footer {
+    background-color: #999898;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ff6f61;
+}
+
+/* Estilos para el botón animado */
+#animated-button {
+    opacity: 0; /* Inicialmente invisible */
+    transform: translateY(100px); /* Posición inicial fuera de la pantalla */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+#animated-button.visible {
+    opacity: 1; /* Visible cuando se active la clase */
+    transform: translateY(0); /* Posición final */
+}
+
+/* Estilos para el botón dentro del contenedor */
+#animated-button .btn-primary {
+    background-color: #ff6f61; /* Color de fondo */
+    color: white; /* Color del texto */
+    padding: 10px 20px; /* Espaciado interno */
+    font-size: 1.2rem; /* Tamaño de la fuente */
+    border: none; /* Sin borde */
+    border-radius: 5px; /* Bordes redondeados */
+    text-decoration: none; /* Sin subrayado */
+}
+
+#animated-button .btn-primary:hover {
+    background-color: #e65a50; /* Color de fondo al pasar el mouse */
+}
+
+#animated-button {
+    position: relative; /* Asegura que el z-index funcione */
+    z-index: 1000; /* Un valor alto para que esté por encima */
+}
+/* Estilos para la tarjeta de registro */
+.card {
+    background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+/* Estilos para el formulario */
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #ff6f61;
+    box-shadow: 0 0 8px rgba(255, 111, 97, 0.3);
+}
+
+/* Estilos para el botón de registro */
+.btn-primary {
+    background-color: #ff6f61;
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e65a50;
+}
+
+/* Estilos para el enlace de inicio de sesión */
+a {
+    color: #ff6f61;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #e65a50;
+}
+/* Estilos para las tarjetas de productos */
+.card {
+    background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+.card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+}
+
+/* Estilos para los modales */
+.modal-content {
+    background: rgba(255, 255, 255, 0.95); /* Fondo semi-transparente */
+    border-radius: 15px;
+    border: none;
+}
+
+.modal-dialog {
+    max-width: 800px; /* Ajusta el ancho máximo del modal */
+}
+
+.modal-content {
+    border-radius: 15px; /* Bordes redondeados */
+}
+
+.modal-body img {
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+    transition: transform 0.3s ease; /* Efecto de hover */
+}
+
+.modal-body img:hover {
+    transform: scale(1.05); /* Escala ligeramente la imagen al pasar el mouse */
+}
+
+.modal-header {
+    border-bottom: none;
+}
+
+.modal-title {
+    color: #333;
+}
+
+.modal-body img {
+    border-radius: 10px;
+}
+
+.modal-body p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.modal-body strong {
+    color: #ff6f61;
+}
+/* Estilos para las imágenes en las tarjetas */
+.card-img-top {
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Ajusta la imagen sin distorsionarla */
+    cursor: pointer; /* Cambia el cursor al pasar sobre la imagen */
+}
+/* Estilos para las notificaciones */
+.alert {
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-error {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+.alert-dismissible .btn-close {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+}
+/* Estilos para el formulario de inicio de sesión */
+.card {
+    background: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente */
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px); /* Efecto de elevación al pasar el mouse */
+}
+
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #ff6f61;
+    box-shadow: 0 0 8px rgba(255, 111, 97, 0.3);
+}
+
+.btn-primary {
+    background-color: #ff6f61;
+    border: none;
+    padding: 12px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #e65a50;
+}
+
+a {
+    color: #ff6f61;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #e65a50;
+}
+
+.navbar-brand img:hover {
+    opacity: 0.8; /* Reduce la opacidad al pasar el mouse */
+}

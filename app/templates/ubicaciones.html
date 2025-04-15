@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <h1 class="text-center mb-5">Nuestras Ubicaciones</h1>
+    
+    <!-- Tarjeta de ubicación 1 -->
+    <div class="row mb-5 align-items-center">
+        <div class="col-md-6">
+            <h2>PowerFit Centro</h2>
+            <p><strong>Dirección:</strong> Av. Principal 123, Ciudad</p>
+            <p><strong>Contacto:</strong> 123 456 789</p>
+            <p><strong>Servicios:</strong> Área de cardio, máquinas de pesas, piscina, sauna</p>
+            <p><strong>Plan Ideal:</strong> Aqui podra aprovechar todas las areas del gym, consulte los planes</p>
+            
+            <!-- Botón para abrir el modal -->
+            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#galeriaModal" onclick="cargarGaleria('centro')">
+                Ver Galería
+            </button>
+        </div>
+        <div class="col-md-6">
+            <!-- Miniatura que también abre el modal -->
+            <div class="gallery-thumbnail" data-bs-toggle="modal" data-bs-target="#galeriaModal" onclick="cargarGaleria('centro')">
+                <img src="{{ url_for('static', filename='images/gym_centro_thumb.jpg') }}" class="img-fluid rounded shadow" alt="PowerFit Centro" loading="lazy">
+                <div class="thumbnail-overlay">
+                    <span class="zoom-icon">+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjeta de ubicación 2 -->
+    <div class="row mb-5 align-items-center">
+        <div class="col-md-6 order-md-2">
+            <h2>PowerFit Norte</h2>
+            <p><strong>Dirección:</strong> Calle Secundaria 456, Ciudad</p>
+            <p><strong>Contacto:</strong> 789 456 123</p>
+            <p><strong>Servicios:</strong> CrossFit, boxeo, yoga, área infantil</p>
+            <p><strong>Plan ideal:</strong> Ideal con el plan familiar; consulte los planes.</p>
+            
+            <button class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#galeriaModal" onclick="cargarGaleria('norte')">
+                Ver Galería
+            </button>
+        </div>
+        <div class="col-md-6 order-md-1">
+            <div class="gallery-thumbnail" data-bs-toggle="modal" data-bs-target="#galeriaModal" onclick="cargarGaleria('norte')">
+                <img src="{{ url_for('static', filename='images/gym_norte_thumb.jpg') }}" class="img-fluid rounded shadow" alt="PowerFit Norte" loading="lazy">
+                <div class="thumbnail-overlay">
+                    <span class="zoom-icon">+</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Galería -->
+    <div class="modal fade" id="galeriaModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="galeriaModalLabel">Galería de Instalaciones</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Carrusel de imágenes -->
+                    <div id="modalCarousel" class="carousel slide" data-bs-ride="false">
+                        <div class="carousel-inner" id="carousel-inner">
+                            <!-- Las imágenes se cargarán dinámicamente con JavaScript -->
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Anterior</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#modalCarousel" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Siguiente</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <div class="d-flex flex-wrap gap-2" id="modal-thumbnails">
+                        <!-- Miniaturas se cargarán dinámicamente -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Estilos para la galería */
+    .gallery-thumbnail {
+        position: relative;
+        cursor: pointer;
+        transition: transform 0.3s;
+        overflow: hidden;
+        border-radius: 8px;
+    }
+    
+    .gallery-thumbnail:hover {
+        transform: scale(1.03);
+    }
+    
+    .thumbnail-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    
+    .gallery-thumbnail:hover .thumbnail-overlay {
+        opacity: 1;
+    }
+    
+    .zoom-icon {
+        color: white;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+    
+    .modal-thumbnail {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s;
+    }
+    
+    .modal-thumbnail:hover, .modal-thumbnail.active {
+        border-color: #0d6efd;
+        transform: scale(1.1);
+    }
+    
+    .modal .carousel-item img {
+        max-height: 70vh;
+        object-fit: contain;
+        margin: 0 auto;
+    }
+    
+    @media (max-width: 768px) {
+        .modal .carousel-item img {
+            max-height: 50vh;
+        }
+    }
+</style>
+
+<script>
+// Datos de las galerías (puedes cargarlos desde Flask si lo prefieres)
+const galerias = {
+    centro: [
+        { src: "{{ url_for('static', filename='images/gym_centro1.jpg') }}", alt: "Área de cardio" },
+        { src: "{{ url_for('static', filename='images/gym_centro2.jpg') }}", alt: "Zona de pesas" },
+        { src: "{{ url_for('static', filename='images/gym_centro3.jpg') }}", alt: "Piscina" }
+    ],
+    norte: [
+        { src: "{{ url_for('static', filename='images/gym_norte1.jpg') }}", alt: "Área de CrossFit" },
+        { src: "{{ url_for('static', filename='images/gym_norte2.jpg') }}", alt: "Sala de yoga" },
+        { src: "{{ url_for('static', filename='images/gym_norte3.jpg') }}", alt: "Área infantil" }
+    ]
+};
+
+// Carga la galería correspondiente en el modal
+function cargarGaleria(sede) {
+    const carouselInner = document.getElementById('carousel-inner');
+    const modalThumbnails = document.getElementById('modal-thumbnails');
+    const modalTitle = document.getElementById('galeriaModalLabel');
+    
+    // Configura el título del modal
+    modalTitle.textContent = `Galería - PowerFit ${sede.charAt(0).toUpperCase() + sede.slice(1)}`;
+    
+    // Limpia el carrusel y las miniaturas
+    carouselInner.innerHTML = '';
+    modalThumbnails.innerHTML = '';
+    
+    // Carga las imágenes de la sede seleccionada
+    galerias[sede].forEach((img, index) => {
+        // Añade items al carrusel
+        const item = document.createElement('div');
+        item.className = `carousel-item ${index === 0 ? 'active' : ''}`;
+        item.innerHTML = `<img src="${img.src}" class="d-block w-100" alt="${img.alt}">`;
+        carouselInner.appendChild(item);
+        
+        // Añade miniaturas
+        const thumb = document.createElement('img');
+        thumb.src = img.src;
+        thumb.className = `modal-thumbnail ${index === 0 ? 'active' : ''}`;
+        thumb.alt = img.alt;
+        thumb.onclick = () => mostrarSlide(index);
+        modalThumbnails.appendChild(thumb);
+    });
+    
+    // Inicializa el carrusel
+    const carousel = new bootstrap.Carousel(document.getElementById('modalCarousel'));
+}
+
+// Muestra un slide específico
+function mostrarSlide(index) {
+    const carousel = new bootstrap.Carousel(document.getElementById('modalCarousel'));
+    carousel.to(index);
+    
+    // Actualiza las miniaturas activas
+    document.querySelectorAll('#modal-thumbnails img').forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === index);
+    });
+}
+
+// Actualiza las miniaturas cuando cambia el slide
+document.getElementById('modalCarousel')?.addEventListener('slid.bs.carousel', function(event) {
+    const activeIndex = event.to;
+    document.querySelectorAll('#modal-thumbnails img').forEach((thumb, i) => {
+        thumb.classList.toggle('active', i === activeIndex);
+    });
+});
+</script>
+{% endblock %}

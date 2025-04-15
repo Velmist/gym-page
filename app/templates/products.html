@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Sección de Productos -->
+<div class="container my-5">
+    <h1 class="text-center mb-4">Productos de VitalFit</h1>
+    <div class="row">
+        <!-- Producto 1 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg">
+                <img src="{{ url_for('static', filename='images/product1.jpg') }}" class="card-img-top" alt="Producto 1" data-bs-toggle="modal" data-bs-target="#productModal1">
+                <div class="card-body">
+                    <h5 class="card-title">Mancuernas Ajustables</h5>
+                    <p class="card-text">Mancuernas de alta calidad con peso ajustable de 5 a 25 kg.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para el Producto 1 -->
+        <div class="modal fade" id="productModal1" tabindex="-1" aria-labelledby="productModalLabel1" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productModalLabel1">Mancuernas Ajustables</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{ url_for('static', filename='images/product1.jpg') }}" class="img-fluid mb-3" alt="Mancuernas Ajustables">
+                        <p><strong>Fabricante:</strong> PowerFit Equipment</p>
+                        <p><strong>Precio:</strong> $120.000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 2 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg">
+                <img src="{{ url_for('static', filename='images/product2.jpg') }}" class="card-img-top" alt="Producto 2" data-bs-toggle="modal" data-bs-target="#productModal2">
+                <div class="card-body">
+                    <h5 class="card-title">Barra Olímpica</h5>
+                    <p class="card-text">Barra de acero inoxidable para levantamiento de pesas.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para el Producto 2 -->
+        <div class="modal fade" id="productModal2" tabindex="-1" aria-labelledby="productModalLabel2" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productModalLabel2">Barra Olímpica</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{ url_for('static', filename='images/product2.jpg') }}" class="img-fluid mb-3" alt="Barra Olímpica">
+                        <p><strong>Fabricante:</strong> PowerFit Equipment</p>
+                        <p><strong>Precio:</strong> $250.000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Producto 3 -->
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-lg">
+                <img src="{{ url_for('static', filename='images/product3.jpg') }}" class="card-img-top" alt="Producto 3" data-bs-toggle="modal" data-bs-target="#productModal3">
+                <div class="card-body">
+                    <h5 class="card-title">Cinta de Correr</h5>
+                    <p class="card-text">Cinta de correr plegable con motor silencioso y pantalla LCD.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para el Producto 3 -->
+        <div class="modal fade" id="productModal3" tabindex="-1" aria-labelledby="productModalLabel3" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="productModalLabel3">Cinta de Correr</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="{{ url_for('static', filename='images/product3.jpg') }}" class="img-fluid mb-3" alt="Cinta de Correr">
+                        <p><strong>Fabricante:</strong> PowerFit Equipment</p>
+                        <p><strong>Precio:</strong> $1.200.000</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

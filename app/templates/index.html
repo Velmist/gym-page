@@ -1,0 +1,182 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- Carrusel -->
+<div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="{{ url_for('static', filename='images/gym1.jpg') }}" class="d-block w-100" alt="Gimnasio 1" loading="lazy">
+            <!-- Botón de registro animado -->
+                <div class="carousel-caption d-flex justify-content-center align-items-center h-100">
+                    <div id="animated-button" class="animated-button">
+                        {% if current_user.is_authenticated %}
+            <!-- Botón para usuarios logueados -->
+            <a href="{{ url_for('ubicaciones') }}" class="btn btn-success btn-lg">¡Visitanos!</a>
+                {% else %}
+            <!-- Botón para usuarios NO logueados -->
+            <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">¡Regístrate Ahora!</a>
+                {% endif %}
+                </div>
+        </div>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/gym2.jpg') }}" class="d-block w-100" alt="Gimnasio 2" loading="lazy">
+        </div>
+        <div class="carousel-item">
+            <img src="{{ url_for('static', filename='images/gym3.jpg') }}" class="d-block w-100" alt="Gimnasio 3" loading="lazy">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>
+
+<!-- Sección de Bienvenida -->
+<div class="container my-5">
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="display-4">Bienvenido a VitalFit Gym</h1>
+            <p class="lead">Transforma tu cuerpo y mente con nuestros planes personalizados y equipos de última generación. Buscamos ofrecer una experiencia inclusiva sin presiones extremas.</p>
+            <a href="{{ url_for('products') }}" class="btn btn-primary btn-lg">Nuestros Productos</a>
+        </div>
+        <div class="col-md-6">
+            <img src="{{ url_for('static', filename='images/welcome.jpg') }}" class="img-fluid" alt="Bienvenida">
+        </div>
+    </div>
+</div>
+
+<!-- Sección de Planes -->
+<div class="bg-light py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Nuestros Planes</h2>
+        <div class="row">
+            <!-- Plan Básico -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Plan Básico</h5>
+                        <p class="card-text">Acceso a todas las áreas del gimnasio.</p>
+                        <p class="card-text"><strong>$299/mes</strong></p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#planBasicoModal">
+                            Más Información
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plan Premium -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Plan Premium</h5>
+                        <p class="card-text">Acceso ilimitado + entrenador personal.</p>
+                        <p class="card-text"><strong>$599/mes</strong></p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#planPremiumModal">
+                            Más Información
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plan Familiar -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Plan Familiar</h5>
+                        <p class="card-text">Para ti y tu familia, con descuentos especiales.</p>
+                        <p class="card-text"><strong>$899/mes</strong></p>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#planFamiliarModal">
+                            Más Información
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modales para los Planes -->
+<!-- Modal para el Plan Básico -->
+<div class="modal fade" id="planBasicoModal" tabindex="-1" aria-labelledby="planBasicoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="planBasicoModalLabel">Plan Básico</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Descripción:</strong> Acceso a todas las áreas del gimnasio.</p>
+                <p><strong>Precio:</strong> $299/mes</p>
+                <p><strong>Beneficios:</strong></p>
+                <ul>
+                    <li>Acceso ilimitado al gimnasio.</li>
+                    <li>Uso de equipos de última generación.</li>
+                    <li>Sin restricciones de horario.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="{{ url_for('pagar', plan='basico') }}" class="btn btn-primary">Pagar Ahora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para el Plan Premium -->
+<div class="modal fade" id="planPremiumModal" tabindex="-1" aria-labelledby="planPremiumModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="planPremiumModalLabel">Plan Premium</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Descripción:</strong> Acceso ilimitado + entrenador personal.</p>
+                <p><strong>Precio:</strong> $599/mes</p>
+                <p><strong>Beneficios:</strong></p>
+                <ul>
+                    <li>Acceso ilimitado al gimnasio.</li>
+                    <li>Entrenador personal incluido.</li>
+                    <li>Clases grupales gratuitas.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="{{ url_for('pagar', plan='premium') }}" class="btn btn-primary">Pagar Ahora</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para el Plan Familiar -->
+<div class="modal fade" id="planFamiliarModal" tabindex="-1" aria-labelledby="planFamiliarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="planFamiliarModalLabel">Plan Familiar</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Descripción:</strong> Para ti y tu familia, con descuentos especiales.</p>
+                <p><strong>Precio:</strong> $899/mes</p>
+                <p><strong>Beneficios:</strong></p>
+                <ul>
+                    <li>Acceso para hasta 4 miembros de la familia.</li>
+                    <li>Descuentos en clases y servicios adicionales.</li>
+                    <li>Área familiar exclusiva.</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <a href="{{ url_for('pagar', plan='familiar') }}" class="btn btn-primary">Pagar Ahora</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
